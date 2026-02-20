@@ -50,39 +50,24 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Yandex Map Initialization
+// Map Placeholder (no API key required)
 function initMap() {
-    if (typeof ymaps === 'undefined') {
-        console.warn('Yandex Maps API not loaded. Map will not be displayed.');
-        document.getElementById('map').innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f0f0f0; color: #666;">Карта временно недоступна</div>';
-        return;
-    }
-
-    ymaps.ready(() => {
-        // Coordinates for: 353430, Краснодарский край, Анапа, Анапское шоссе, д. 72
-        // Approximate coordinates (may need adjustment)
-        const coords = [44.8951, 37.3161]; // Anapa center coordinates
-        
-        const map = new ymaps.Map('map', {
-            center: coords,
-            zoom: 14,
-            controls: ['zoomControl', 'fullscreenControl']
-        });
-
-        const placemark = new ymaps.Placemark(coords, {
-            balloonContent: '<strong>ООО "Август"</strong><br>353430, Краснодарский край,<br>Анапа, Анапское ш., д. 72<br><a href="tel:+78613359752">+7 (861) 335-97-52</a>'
-        }, {
-            preset: 'islands#blueDotIcon',
-            iconColor: '#1e3a8a'
-        });
-
-        map.geoObjects.add(placemark);
-        
-        // Disable drag on mobile for better UX
-        if (window.innerWidth <= 768) {
-            map.behaviors.disable('drag');
-        }
-    });
+    document.getElementById('map').innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 20px; text-align: center; border-radius: 15px;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📍</div>
+            <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Наш адрес</h3>
+            <p style="font-size: 1.1rem; line-height: 1.6;">
+                353430, Краснодарский край<br>
+                Город-Курорт Анапа<br>
+                Анапское шоссе, д. 72
+            </p>
+            <a href="https://yandex.ru/maps/?text=353430,%20Краснодарский%20край,%20Анапа,%20Анапское%20ш.,%20д.%2072" 
+               target="_blank" 
+               style="margin-top: 1.5rem; padding: 0.8rem 2rem; background: white; color: #1e3a8a; border-radius: 30px; text-decoration: none; font-weight: 600;">
+                Открыть на Яндекс.Картах →
+            </a>
+        </div>
+    `;
 }
 
 // Initialize map when DOM is loaded
