@@ -486,3 +486,200 @@ body {
 .contact-item {
     animation: fadeInUp 0.6s ease-out;
 }
+
+/* ========================================
+   UX КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ
+   Применено: Sat Feb 21 02:33:13 MSK 2026
+   ======================================== */
+/* ========================================
+   КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ - AVGUST LANDING
+   Добавить в конец styles.css
+   ======================================== */
+
+/* 1. МОБИЛЬНОЕ МЕНЮ - ИСПРАВЛЕНИЕ */
+@media (max-width: 768px) {
+    .nav.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 1rem;
+        gap: 0;
+        z-index: 999;
+    }
+    
+    .nav.active a {
+        padding: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .nav.active a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Анимация бургера в крестик */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
+/* 2. TOUCH TARGETS - УВЕЛИЧЕНИЕ */
+.nav a {
+    padding: 12px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .nav a {
+        padding: 14px 1rem;
+    }
+}
+
+.contact-item a {
+    display: inline-block;
+    padding: 10px 0;
+    min-height: 44px;
+    line-height: 24px;
+}
+
+/* 3. FOCUS СОСТОЯНИЯ */
+.btn:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.nav a:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* 4. АКТИВНАЯ НАВИГАЦИЯ */
+.nav a.active {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.nav a.active::after {
+    width: 100%;
+}
+
+/* 5. КОНТРАСТНОСТЬ - УЛУЧШЕНИЕ */
+:root {
+    --text-light: #5a6169; /* было: #6b7280 - улучшен контраст */
+}
+
+/* 6. АДАПТИВНОСТЬ КОНТАКТОВ */
+@media (max-width: 640px) {
+    .contacts-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Убедитесь, что на планшетах 768px остается 2 колонки */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .contacts-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 7. SKIP LINK */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 12px 24px;
+    text-decoration: none;
+    z-index: 10000;
+    font-weight: 600;
+    border-radius: 0 0 8px 0;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* 8. КАРТА - ПЛЕЙСХОЛДЕР (если нет API ключа) */
+.map-placeholder {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.map-placeholder img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 58, 138, 0.95);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    font-weight: 600;
+}
+
+.map-placeholder:hover .map-overlay,
+.map-placeholder:focus .map-overlay {
+    transform: translateY(0);
+}
+
+.map-placeholder:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+/* 9. УЛУЧШЕННЫЕ HOVER СОСТОЯНИЯ */
+.service-card:focus-within {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 4px;
+}
+
+/* 10. УЛУЧШЕНИЕ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero-title {
+        font-size: 1.85rem;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        min-height: 50px; /* увеличенный touch target */
+    }
+}
