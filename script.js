@@ -156,7 +156,8 @@ function closeMenuOnEscape(e) {
 
 function trapMenuFocus(e) {
     if (e.key === 'Tab') {
-        const focusableElements = navFixed.querySelectorAll('a');
+        // Включаем кнопку бургера в focus trap для полноценного цикла
+        const focusableElements = [mobileMenuBtnFixed, ...navFixed.querySelectorAll('a')];
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
         
