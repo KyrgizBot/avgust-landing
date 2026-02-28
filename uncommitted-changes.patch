@@ -1,0 +1,13 @@
+diff --git a/index.html b/index.html
+index 078b8df..49e4e19 100644
+--- a/index.html
++++ b/index.html
+@@ -32,7 +32,7 @@
+         <div class="container">
+             <div class="header-content">
+                 <div class="logo">
+-                    <h1>АВ<span class="logo-accent">Г</span>УСТ</h1>
++                    <h1>АВГ<span class="logo-accent">У</span>СТ</h1>
+                 </div>
+                 <nav class="nav" id="mainNav" role="navigation" aria-label="Основная навигация">
+                     <a href="#services">Услуги</a>
