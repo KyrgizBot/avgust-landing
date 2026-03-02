@@ -234,20 +234,27 @@
         submitBtn.textContent = 'Отправка...';
         submitBtn.disabled = true;
         
-        // Simulate API call (replace with actual backend endpoint in production)
+        // ⚠️ ДЕМО-РЕЖИМ: Форма не отправляет данные на сервер!
+        // Это имитация отправки для демонстрации работы интерфейса.
+        // В продакшене необходимо заменить этот блок на реальный backend endpoint.
         setTimeout(() => {
             safeLog('Form data:', data);
             
-            // In production, send data to backend:
+            // TODO: В продакшене реализовать отправку на backend:
             // fetch('/api/contact', {
             //     method: 'POST',
             //     headers: { 'Content-Type': 'application/json' },
             //     body: JSON.stringify(data)
             // })
             // .then(response => response.json())
-            // .then(result => { ... })
+            // .then(result => { 
+            //     showMessage('Спасибо! Ваша заявка успешно отправлена.', 'success');
+            // })
+            // .catch(error => {
+            //     showMessage('Ошибка отправки. Попробуйте позже.', 'error');
+            // });
             
-            // Show success message with checkmark
+            // DEMO: Показываем успех без реальной отправки
             showMessage('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
             
             // Reset form
